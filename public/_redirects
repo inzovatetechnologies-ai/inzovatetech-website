@@ -1,0 +1,6 @@
+/blog               /blogs                  301
+/blog/*             /blogs/:splat           301
+/career             /careers                301
+/partnerships       /strategic-partnerships 301
+/api/*              http://51.21.222.104/api/:splat 200
+/*                  /index.html             200

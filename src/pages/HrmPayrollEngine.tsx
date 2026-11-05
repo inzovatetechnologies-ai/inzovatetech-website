@@ -1,0 +1,313 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  UserCheck,
+  Building2,
+  FileSpreadsheet,
+  CheckCircle2,
+  AlertTriangle,
+  ArrowRight,
+  ShieldCheck,
+  TrendingUp,
+  Sparkles,
+  Calculator,
+  Receipt,
+  FileCheck,
+  Clock,
+  Landmark,
+  FileText,
+  BadgeDollarSign,
+  Send,
+  Zap,
+} from "lucide-react";
+import SEO from "../components/SEO";
+import CrmLeadForm from "../components/CrmLeadForm";
+import { InzovateFaviconIcon } from "../components/InzovateBrandIcon";
+import CrmFaqSection, { FaqItem } from "../components/CrmFaqSection";
+
+const payrollFaqs: FaqItem[] = [
+  {
+    question: "Does Inzovate Payroll automate statutory deductions like PF, ESI, TDS, and Professional Tax?",
+    answer: "Yes, our automated payroll engine computes dynamic statutory deductions (EPF, ESIC, PT, LWF) and income tax (TDS) according to the latest Indian Tax Regime rules (Old vs New Regime) with 100% compliance."
+  },
+  {
+    question: "Can we generate automated Form 16, digital pay slips, and bank transfer advice files?",
+    answer: "Yes! In 1-click, generate password-protected digital pay slips sent via WhatsApp & Email, bulk bank NEFT/RTGS salary disbursement advice files, and automated annual Form 16 Part A & B generation."
+  },
+  {
+    question: "How does the payroll engine integrate with attendance and leave management?",
+    answer: "The payroll engine directly syncs with biometric devices, RFID scanners, and mobile GPS punch-ins. Overtime, lop days, unpaid leaves, and comp-offs are automatically factored into monthly salary calculations."
+  },
+  {
+    question: "Can we configure custom salary structures, allowances, and flexi-benefits for different grades?",
+    answer: "Absolutely. Build unlimited salary structures with custom basic pay, HRA, special allowances, reimbursements, performance bonuses, gratuity formulas, and flexible employee benefit options."
+  }
+];
+
+export default function HrmPayrollEngine() {
+  const scrollToForm = () => {
+    const el = document.getElementById("lead-form");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900">
+      <SEO
+        title="Automated Payroll Engine Software | Salary Processing & Statutory Compliance"
+        description="Automate payroll calculation, statutory compliance (PF, ESI, TDS, PT), 1-click salary disbursement, and digital pay slip generation with Inzovate Payroll Software."
+        canonicalUrl="https://inzovate-technologies.com/hrm-payroll-engine"
+        keywords="automated payroll engine, payroll software India, salary processing software, statutory compliance PF ESI TDS, Form 16 generation software, enterprise payroll system"
+        breadcrumbs={[
+          { name: "Home", url: "https://inzovate-technologies.com" },
+          { name: "HRM Suite", url: "https://inzovate-technologies.com/products/hrm" },
+          { name: "Automated Payroll Engine", url: "https://inzovate-technologies.com/hrm-payroll-engine" }
+        ]}
+        faqs={payrollFaqs}
+      />
+
+      <div className="sh-spacer" />
+
+
+
+      {/* HERO SECTION */}
+      <section className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F8FAFC]">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-100/60 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 home-banner-animate animate">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="fade-left">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Automated Payroll Engine & Compliance Software
+              </h1>
+              <h2 className="mt-4 text-xl sm:text-2xl font-bold text-indigo-400">
+                1-Click Salary Calculation, Automated Tax Deductions & Instant Pay Slips
+              </h2>
+              </div>
+              <div className="fade-right delay-1">
+              <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
+                Transform hours of manual salary spreadsheets into an effortless 1-click execution. Inzovate's Automated Payroll Engine handles multi-tier salary structures, complex statutory deductions (PF, ESI, TDS, PT), bonus payouts, and direct bank disbursement files with 100% statutory precision.
+              </p>
+              <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
+                Seamlessly integrated with biometric attendance and expense reimbursements, ensuring zero payroll leakage and timely salary credit on the 1st of every month.
+              </p>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-4 fade-left delay-2">
+                <Link
+                  to="/pricing"
+                  className="px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-extrabold rounded-full border border-slate-700 shadow-lg shadow-slate-900/15 hover:shadow-xl hover:border-slate-500 hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                >
+                  <InzovateFaviconIcon size={18} className="text-blue-400" />
+                  <span>Start Free Trial — View Pricing</span>
+                  <ArrowRight size={18} className="text-blue-400" />
+                </Link>
+                <button
+                  type="button"
+                  onClick={scrollToForm}
+                  className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 hover:border-slate-400 font-bold rounded-full shadow-sm transition-all duration-300 cursor-pointer"
+                >
+                  Book a Live Demo
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Metrics Console */}
+            <div className="lg:col-span-5 fade-right delay-2">
+              <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <h3 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+                  <Calculator className="text-indigo-400" size={20} />
+                  Payroll Performance Console
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Payroll Processing Speed</div>
+                      <div className="text-2xl font-bold text-indigo-400">95% Faster</div>
+                    </div>
+                    <div className="text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                      1-Click Runs
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Statutory Compliance Accuracy</div>
+                      <div className="text-2xl font-bold text-emerald-700">100%</div>
+                    </div>
+                    <div className="text-xs text-indigo-400 font-semibold bg-indigo-500/10 px-2.5 py-1 rounded-full border border-indigo-500/20">
+                      PF, ESI & TDS
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Employee Pay Slip Delivery</div>
+                      <div className="text-2xl font-bold text-blue-700">Instant</div>
+                    </div>
+                    <div className="text-xs text-cyan-400 font-semibold bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">
+                      WhatsApp & Email
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                  <span className="flex items-center gap-1">
+                    <ShieldCheck size={14} className="text-emerald-400" />
+                    Encrypted Salary Data
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Sparkles size={14} className="text-amber-400" />
+                    Automated Form 16
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PAIN POINTS / CHALLENGES SECTION */}
+      <section className="homewhatweboxbg whatareyou-animate py-14 lg:py-16 bg-[#F8FAFC] border-t border-slate-200 animate" style={{ userSelect: "none" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="fade-left text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-xs font-bold text-indigo-400 uppercase tracking-widest">
+              Overcoming Payroll Bottlenecks
+            </h2>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-2">
+              Why Manual Payroll Creates Financial Leaks and Compliance Fines
+            </h3>
+            <p className="text-slate-500 mt-3 text-sm sm:text-base">
+              Relying on fragile spreadsheets leads to salary calculation discrepancies, delayed salary disbursements, and heavy statutory penalty notices.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className={`p-6 rounded-2xl bg-white border border-red-200 hover:border-red-300 hover:shadow-md transition-all fade-left delay-1`}>
+              <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mb-4">
+                <AlertTriangle size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Manual Tax & Statutory Slip-Ups</h4>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Miscalculating TDS under the new tax regime or miscalculating PF & ESI wage caps causes costly non-compliance audits and penalties.
+              </p>
+            </div>
+
+            <div className={`p-6 rounded-2xl bg-white border border-amber-200 hover:border-amber-300 hover:shadow-md transition-all fade-left delay-1`}>
+              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
+                <Clock size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Month-End Payroll Delays</h4>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                HR and Finance teams waste 4-6 days every month gathering attendance punch logs, calculating leaves, and re-checking formulas before running payouts.
+              </p>
+            </div>
+
+            <div className={`p-6 rounded-2xl bg-white border border-indigo-200 hover:border-indigo-300 hover:shadow-md transition-all fade-left delay-1`}>
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+                <FileSpreadsheet size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Employee Queries & Friction</h4>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Inaccessible pay slips and confusing salary breakdowns result in hundreds of employee support tickets regarding deductions and reimbursements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CORE FEATURES GRID */}
+      <section id="features" className="homewhatweboxbg whatareyou-animate py-14 lg:py-16 bg-[#F8FAFC] border-t border-slate-200 animate" style={{ userSelect: "none" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="fade-left text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-bold text-indigo-400 uppercase tracking-widest">
+              Comprehensive Feature Suite
+            </h2>
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+              Everything Needed for Automated, Compliant Payroll
+            </h3>
+            <p className="text-slate-500 mt-4 text-base">
+              Built specifically for modern growing enterprises, mid-market businesses, and corporate teams with complex compensation hierarchies.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5 group-hover:scale-110 transition-transform">
+                <Calculator size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">1-Click Salary Calculation</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Process payroll across 1,000+ employees in seconds. Auto-computes gross salary, dynamic overtime, night shifts, and net take-home salary.
+              </p>
+            </div>
+
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">Statutory PF, ESI, TDS & PT</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Compliant with Indian statutory laws. Automatically generates ECR PF text files, ESIC monthly return files, and quarterly 24Q TDS summaries.
+              </p>
+            </div>
+
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+                <Landmark size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">Direct Bank Salary Payouts</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Generate pre-formatted bank disbursement files (HDFC, ICICI, SBI, Axis) for batch salary transfer with single-click batch clearance.
+              </p>
+            </div>
+
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 transition-transform">
+                <FileText size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">Digital Passworded Pay Slips</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Branded PDF salary slips automatically delivered to employee inboxes and mobile apps with password encryption and breakdown of tax deductions.
+              </p>
+            </div>
+
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+                <Receipt size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">Automated Form 16 Generation</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Generate Part A and Part B of Form 16 at the end of the financial year. Employees can download digital signed certificates with zero HR intervention.
+              </p>
+            </div>
+
+            <div className={`p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all group flipbox-fade-down flipbox-delay-2`}>
+              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5 group-hover:scale-110 transition-transform">
+                <TrendingUp size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-2">Salary Ledger & ERP Sync</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Sync payroll expense vouchers directly into your accounting general ledger (Tally, Zoho, Inzovate ERP) with accurate department cost centering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <CrmFaqSection
+        title="Frequently Asked Questions: Automated Payroll Engine"
+        industryFaqs={payrollFaqs}
+      />
+
+      {/* LEAD CAPTURE FORM */}
+      <div id="lead-form">
+        <CrmLeadForm defaultIndustry="HRM & Payroll" pageTitle="Automated Payroll Engine" />
+      </div>
+    </div>
+  );
+}

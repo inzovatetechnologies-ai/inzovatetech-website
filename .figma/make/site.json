@@ -1,0 +1,10 @@
+{
+  "description": "Explore the INZOVATE Technologies blog for expert insights on Zoho CRM, HRM, cloud solutions, AI automation, digital transformation, cybersecurity, and business technology.",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
