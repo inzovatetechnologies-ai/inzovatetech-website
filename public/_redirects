@@ -2,4 +2,3 @@
 /blog/*             /blogs/:splat           301
 /career             /careers                301
 /partnerships       /strategic-partnerships 301
-/*                  /index.html             200
