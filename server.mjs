@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { seoRouter } from "./server/seo/api/seoRoutes.mjs";
 
 const __serverDir = path.dirname(fileURLToPath(import.meta.url));
 
@@ -13,6 +14,9 @@ const PORT = process.env.SMTP_PORT || 5000;
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+
+// ── Inzovate SEO Intelligence Engine Router ─────────────────────────────────
+app.use("/api/seo", seoRouter);
 
 // ── SMTP Transporters ────────────────────────────────────────────────────────
 // 1. Company SMTP Transporter (inzovatetechnologies@gmail.com)

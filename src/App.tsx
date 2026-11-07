@@ -21,6 +21,7 @@ const Careers = lazy(() => import("./pages/Careers"));
 const Blog = lazy(() => import("./pages/blog"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const SeoAdminDashboard = lazy(() => import("./pages/SeoAdminDashboard"));
 
 // CRM Industry Landing Pages
 const CrmByIndustry = lazy(() => import("./pages/CrmByIndustry"));
@@ -256,6 +257,7 @@ function Layout() {
             <Route path="/products/hrm/lifecycle-appraisals" element={<Navigate to="/hrm-lifecycle-appraisals" replace />} />
 
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/seo" element={<SeoAdminDashboard />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />

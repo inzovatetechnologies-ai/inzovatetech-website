@@ -14,7 +14,8 @@ logs/
 *.zip
 *.pem
 
-# Platform-managed agentplat state, not project source. In the
+# Local SEO Cache
+server/seo/data_store/
 # client-initiated single-repo workspace layout (make's `Path: "."` spec) the
 # repo root IS the workspace root, so these land inside this repo rather than
 # beside it.
