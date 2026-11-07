@@ -102,6 +102,7 @@ export default function SeoAdminDashboard() {
   const [districtFilter, setDistrictFilter] = useState<string>("");
   const [phaseFilter, setPhaseFilter] = useState<string>("");
   const [ingestingPhase2, setIngestingPhase2] = useState<boolean>(false);
+  const [isStandalone, setIsStandalone] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -121,6 +122,37 @@ export default function SeoAdminDashboard() {
       verifyAuthentication(apiKey);
     }
   }, []);
+
+  
+  function filterStandaloneKeywords(targetPage: number) {
+    let filtered = [...STANDALONE_KEYWORDS_SEED];
+    if (searchTerm) {
+      const q = searchTerm.toLowerCase();
+      filtered = filtered.filter(k => k.keyword.toLowerCase().includes(q) || (k.locality && k.locality.toLowerCase().includes(q)));
+    }
+    if (categoryFilter) {
+      filtered = filtered.filter(k => k.category === categoryFilter);
+    }
+    if (intentFilter) {
+      filtered = filtered.filter(k => k.search_intent === intentFilter);
+    }
+    if (districtFilter) {
+      filtered = filtered.filter(k => k.district === districtFilter);
+    }
+    if (phaseFilter) {
+      filtered = filtered.filter(k => k.phase === phaseFilter);
+    }
+
+    const pageSize = 25;
+    const total = filtered.length;
+    const start = (targetPage - 1) * pageSize;
+    const paginated = filtered.slice(start, start + pageSize);
+
+    setKeywords(paginated as any);
+    setPage(targetPage);
+    setTotalPages(Math.max(1, Math.ceil(total / pageSize)));
+    setTotalCount(total);
+  }
 
   async function verifyAuthentication(tokenToTest: string) {
     setLoading(true);
@@ -150,6 +182,10 @@ export default function SeoAdminDashboard() {
   }
 
   async function fetchKeywords(token: string, targetPage: number) {
+    if (isStandalone) {
+      filterStandaloneKeywords(targetPage);
+      return;
+    }
     setLoading(true);
     try {
       const params = new URLSearchParams({
