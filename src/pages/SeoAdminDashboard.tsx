@@ -99,6 +99,9 @@ export default function SeoAdminDashboard() {
   const [categoryFilter, setCategoryFilter] = useState<string>("");
   const [intentFilter, setIntentFilter] = useState<string>("");
   const [locationFilter, setLocationFilter] = useState<string>("");
+  const [districtFilter, setDistrictFilter] = useState<string>("");
+  const [phaseFilter, setPhaseFilter] = useState<string>("");
+  const [ingestingPhase2, setIngestingPhase2] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -157,6 +160,8 @@ export default function SeoAdminDashboard() {
       if (categoryFilter) params.append("category", categoryFilter);
       if (intentFilter) params.append("intent", intentFilter);
       if (locationFilter) params.append("location", locationFilter);
+      if (districtFilter) params.append("district", districtFilter);
+      if (phaseFilter) params.append("phase", phaseFilter);
 
       const res = await fetch(`${apiBase}/admin/keywords?${params.toString()}`, {
         headers: { "x-api-key": token }

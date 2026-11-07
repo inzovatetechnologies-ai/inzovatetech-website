@@ -15,6 +15,8 @@ import { INZOVATE_CANONICAL_PAGES } from "../engine/pageMapper.mjs";
 import { analyzeContentGaps } from "../engine/opportunityScorer.mjs";
 import { generatePageMetadata } from "../engine/metadataGenerator.mjs";
 import { gscClient } from "../integrations/googleSearchConsole.mjs";
+import { runPhase2Migration } from "../database/phase2Migration.mjs";
+import { FOUR_DISTRICT_MATRIX } from "../engine/phase2LocationMatrix.mjs";
 
 export const seoRouter = express.Router();
 
@@ -110,6 +112,9 @@ seoRouter.get("/admin/keywords", async (req, res) => {
       intent,
       location,
       country,
+      district,
+      locality,
+      phase,
       search,
     } = req.query;
 
@@ -121,6 +126,9 @@ seoRouter.get("/admin/keywords", async (req, res) => {
     if (intent) query.search_intent = intent;
     if (location) query.target_location = location;
     if (country) query.target_country = country;
+    if (district) query.district = district;
+    if (locality) query.locality = locality;
+    if (phase) query.phase = phase;
     if (search) query.keyword = { $regex: String(search), $options: "i" };
 
     const pageNum = Math.max(1, parseInt(page, 10) || 1);
@@ -276,6 +284,55 @@ seoRouter.get("/admin/gsc-status", async (req, res) => {
     res.json({
       success: true,
       gsc: perf,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 8. Phase 2 Local & Industry Expansion Status
+seoRouter.get("/admin/phase2-status", async (req, res) => {
+  try {
+    const { db } = await dbManager.connect();
+    const coll = db.collection(SEO_CONFIG.collections.keywords);
+
+    const totalPhase2 = await coll.countDocuments({ phase: "PHASE_2_LOCAL_EXPANSION" });
+    const erodeCount = await coll.countDocuments({ district: "Erode" });
+    const namakkalCount = await coll.countDocuments({ district: "Namakkal" });
+    const salemCount = await coll.countDocuments({ district: "Salem" });
+    const cbeCount = await coll.countDocuments({ district: "Coimbatore" });
+    const zohoCount = await coll.countDocuments({ category: "Zoho" });
+    const awsCount = await coll.countDocuments({ category: "Cloud and AWS" });
+
+    res.json({
+      success: true,
+      phase2: {
+        totalExpansionRecords: totalPhase2,
+        districts: {
+          erode: erodeCount,
+          namakkal: namakkalCount,
+          salem: salemCount,
+          coimbatore: cbeCount,
+        },
+        ecosystemDomination: {
+          zoho: zohoCount,
+          aws: awsCount,
+        },
+        fourDistrictMatrix: FOUR_DISTRICT_MATRIX,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 9. Phase 2 Ingestion Trigger
+seoRouter.post("/admin/phase2-ingest", async (req, res) => {
+  try {
+    const result = await runPhase2Migration();
+    res.json({
+      success: true,
+      result,
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
